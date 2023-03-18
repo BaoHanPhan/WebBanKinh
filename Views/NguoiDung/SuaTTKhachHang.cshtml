@@ -1,0 +1,65 @@
+﻿@model Đồ_Án_Web.Models.TTKhachHang
+@{
+    ViewBag.Title = "SuaTTKhachHang";
+    Layout = "~/Views/Shared/_TrangChu.cshtml";
+}
+
+<h2 style="padding-right: 290px">Sửa thông tin cá nhân</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="navbar">
+
+        <div class="content">
+            <div class="Info" style="padding-left: 300px">
+                <div class="row">
+                    <div class="text">
+                        <p style="text-align:left">
+                            Họ Tên:
+                            <br />
+                            Tài khoản:
+                            <br />
+                            Mật khẩu
+                            <br />
+                            Email:
+                            <br />
+                            Số điện thoại:
+                            <br />
+                            Địa chỉ:
+                        </p>
+                    </div>
+                    <div class="text">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.TaiKhoan)
+                        <p style="text-align:left">
+                            @Html.EditorFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
+                            <br />
+                            @Model.TaiKhoan
+                            <br />
+                            @Html.EditorFor(model => model.MatKhau, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
+                            <br />
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                            <br />
+                            @Html.EditorFor(model => model.DienThoaiKH, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.DienThoaiKH, "", new { @class = "text-danger" })
+                            <br />
+                            @Html.EditorFor(model => model.DiaChiKH, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.DiaChiKH, "", new { @class = "text-danger" })
+                        </p>
+                        <input type="submit" value="Lưu" class="btn btn-default" />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Trở về", "TTKhachHang", new { id = Session["MaKH"] })
+</div>
+

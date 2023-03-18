@@ -1,0 +1,64 @@
+﻿@using Đồ_Án_Web.Models
+@using PagedList.Mvc
+@model PagedList.PagedList<Đồ_Án_Web.Models.Admin>
+
+@helper Truncate(string input, int length)
+{               if (input.Length < length)
+    {
+@input }
+                else
+                {
+@input.Substring(0, length)<text>...</text>}
+}
+
+@{ ViewBag.Title = "TkAdmin";
+                Layout = "~/Views/Shared/_LayoutAdmin.cshtml"; }
+
+<br />
+<br />
+<h2>Quản lý tài khoản ADMIN</h2>
+<br />
+
+<table class="table" style="margin:15px">
+    <tr>
+        <th style="width:28%">Tài khoản</th>
+        <th style="width: 28% ">Mật khẩu</th>
+        <th style="width: 28% ">Họ tên</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.TK)
+    </td>
+    <td>
+        @Truncate(item.MK, 1)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.HoTenAD)
+    </td>
+    <td>
+
+        @Html.ActionLink("Sửa", "SuaAdmin", new { id = item.TK }) |
+        @Html.ActionLink("Xóa", "XoaAdmin", new { id = item.TK })
+
+    </td>
+</tr>}
+
+</table>
+
+
+<p style="text-align:right">@Html.ActionLink("Tạo tài khoản", "ThemAdmin")</p>
+
+<!--Tạo liên kết trang-->
+Trang @(Model.PageCount< Model.PageNumber ? 0: Model.PageNumber)/@Model.PageCount
+<div class="MenuTrang">
+    @Html.PagedListPager(Model, page => Url.Action("TkAdmin", new { page = page }))
+</div>
+<style>
+    .MenuTrang li {
+        display: inline;
+    }
+</style>

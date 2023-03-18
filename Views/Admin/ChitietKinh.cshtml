@@ -1,0 +1,68 @@
+﻿@model Đồ_Án_Web.Models.Kinh
+
+@{ ViewBag.Title = "ChitietKinh";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml"; }
+
+<br />
+<br />
+<h2>Chi tiết kính</h2>
+<br />
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên Sản Phẩm
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenKinh)
+        </dd>
+
+        <dt>
+            Giá bán
+        </dt>
+
+        <dd>
+            @String.Format("{0:0,0}", Model.GiaBan) VNĐ
+        </dd>
+
+        <dt>
+            Ảnh sản phẩm
+        </dt>
+
+        <dd>
+            <img src="@Url.Content("~/img/"+ Model.AnhBia)" width="400" />
+        </dd>
+
+        <dt>
+            Mô tả
+        </dt>
+
+        <dd>
+        <dd style="width:600px;text-align:justify">
+            @Html.DisplayFor(model => model.MoTa)
+        </dd>
+
+        <dt>
+            Loại sản phẩm
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoaiKinh.TenLoaiKinh)
+        </dd>
+
+        <dt>
+            Tên thương hiệu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HangSanXuat.TenHSX)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "SuaKinh", new { id = Model.MaKinh }) |
+    @Html.ActionLink("Back to List", "Kinh")
+</p>

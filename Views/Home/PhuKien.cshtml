@@ -1,0 +1,60 @@
+﻿@using Đồ_Án_Web.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<PhuKien>
+
+@{
+    ViewBag.Title = "PhuKien";
+    Layout = "~/Views/Shared/_TrangChu.cshtml";
+}
+
+<h2 style="padding-right:220px">Tất Cả Phụ Kiện</h2>
+@foreach (var PhuKien in Model)
+{
+    <div class="product">
+        <a href="@Url.Action("ChiTietpk","Home",new { id = PhuKien.MaPK})">
+            <h4 class="productName">@PhuKien.TenPhuKien</h4>
+            <img class="productImg" src="~/img/@PhuKien.AnhBiaPK" width="250">
+            <p class="productPrice ">@PhuKien.GiaBanPK VNĐ</p>
+
+        </a>
+        <!-- <a href="" class="productDetail ">Chi tiết</a> -->
+        <div class="box">
+            <a class="popupDetail " href=@Url.Action("ChiTietpk","Home",new { id = PhuKien.MaPK})>Chi tiết</a>
+            <a class="popupDetail " href="#popup1">Xem trước</a>
+        </div>
+    </div>
+}
+<div class="MenuTrang1">
+    @*Tạo Liên Kết Trang*@
+    Trang @(Model.PageCount<Model.PageNumber?0:Model.PageNumber)/@Model.PageCount;
+</div>
+<div class="MenuTrang">
+    @Html.PagedListPager(Model, page => Url.Action("PhuKien", new { page = page }))
+</div>
+<style>
+    .MenuTrang {
+        float: left;
+        justify-content: center;
+        width: 80%;
+        max-width: 100%;
+        text-align: center;
+        padding-left: 37%;
+    }
+
+    .pagination li {
+        float: left;
+        display: inline;
+        max-width: 100%;
+        list-style-type: none;
+        padding-top: 5px;
+        padding-right: 20px;
+    }
+
+    .MenuTrang1 {
+        display: inline;
+        margin-top: 84px;
+        float: left;
+        width: 80%;
+        max-width: 100%;
+    }
+</style>

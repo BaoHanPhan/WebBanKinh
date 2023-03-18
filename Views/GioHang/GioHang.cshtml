@@ -1,0 +1,63 @@
+﻿@using Đồ_Án_Web.Models;
+@model List<GioHang>
+
+
+@{
+    ViewBag.Title = "GioHang";
+    Layout = "~/Views/Shared/_LayoutGioHang.cshtml";
+}
+
+<h2>Giỏ Hàng</h2>
+<div class="shopping-cart">
+    <h1>Giỏ hàng</h1>
+    <div class="column-labels">
+        <label class="product-image">Hình ảnh</label>
+        <label class="product-details">Sản phẩm </label>
+        <label class="product-price">Giá tiền</label>
+        <label class="product-quantity">Số lượng</label>
+        <label class="product-removal">Xóa</label>
+        <label class="product-line-price">Thành tiền</label>
+    </div>
+</div>
+@foreach (var giohang in Model)
+{
+<div class="product">
+    @using (Html.BeginForm("UpdateGioHang", "GioHang", new { @MaSP = giohang.makinh }))
+    {
+        <div class="product-image">
+            <img src="~/img/@giohang.anhbia" />
+        </div>
+        <div class="product-details">
+            <div class="product-title">@giohang.tenkinh</div>
+        </div>
+        <div class="product-price">@giohang.giaban VNĐ</div>
+        <div class="product-quantity">
+            <input type="number" name="txtSoluong" min="1" value="@giohang.soluong" @ViewBag.Tongsoluong>
+        </div>
+        <div class="product-removal">
+            <button class="update-product" type="submit">
+                Cập Nhật
+            </button>
+            
+            <button class="remove-product" >
+                @Html.ActionLink("Xóa", "XoaGioHang", new { @MaSP = giohang.makinh })
+            </button>
+        </div>
+        <div class="product-line-price">@giohang.thanhtien </div>     
+    }
+</div>
+}
+
+<div class="totals">
+    <div class="totals-item">
+        <label>Tổng tiền hàng</label>
+        <div class="totals-value" id="cart-subtotal">@String.Format("{0:0,0}", ViewBag.Tongtien) VNĐ</div>
+    </div>
+</div>
+
+<a href="@Url.Action("DatHang", "GioHang")" class="checkout">Đặt hàng</a>
+<button class="remove-product">
+    @Html.ActionLink("Xóa tất cả", "XoaAll")
+</button>
+   
+

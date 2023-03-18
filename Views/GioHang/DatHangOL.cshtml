@@ -1,0 +1,194 @@
+﻿@using Đồ_Án_Web.Models
+@model List<GioHang>
+
+@{
+    Layout = "~/Views/Shared/_LayoutGioHang.cshtml";
+}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>Đặt hàng</title>
+    <link href="~/Content/DatHang.css" rel="stylesheet" />
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/checkout/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="form-validation.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="line">
+            <h3>Welcome to HQM glasses!</h3>
+        </div>
+        <div class="menu">
+            <div class="drop">
+                <a href=@Url.Action("SanPham", "Home" ) class="item ">Sản phẩm</a>
+                <div class="drop-menu">
+                    <a href=@Url.Action("MatKinhNu", "Home" )>Mắt kính nữ</a>
+                    <a href=@Url.Action("MatKinhNam", "Home" )>Mắt kính nam</a>
+                    <a href=@Url.Action("MatKinhTreEm", "Home" )>Mắt kính trẻ em</a>
+                </div>
+
+            </div>
+            <div class="drop">
+
+                <a href=@Url.Action("PhuKien", "Home" ) class="item">Phụ kiện</a>
+                <div class="drop-menu">
+                    <a href=@Url.Action("HopKinh", "Home" )>Hộp đựng kính</a>
+                    <a href=@Url.Action("DayDeoKinh", "Home" )>Dây đeo kính</a>
+                    <a href=@Url.Action("NuocLauKinh", "Home" )>Nước lau kính</a>
+                </div>
+            </div>
+
+            <a href="#footer-page" class="item">Liên hệ</a>
+
+            <a href=@Url.Action("TrangChu", "Home" ) class="logo">
+                <img src="/img/HQM.png" width="180px"
+                     height="80px" alt="">
+            </a>
+
+
+            @Html.Action("GioHangPartial", "GioHang")
+            <a href=@Url.Action("DangKy", "NguoiDung" ) class="item">Đăng ký</a>
+            <a href=@Url.Action("DangNhap", "NguoiDung" ) class="item">Đăng nhập</a>
+        </div>
+    </div>
+
+    <div class="bg-light">
+        <div class="container">
+            <div class="py-5 text-center">
+
+                <h2>Đặt hàng</h2>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 order-md-2 mb-4">
+                    <h4 class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="text-muted">Giỏ hàng của bạn</span>
+                        <span class="badge badge-secondary badge-pill"></span>
+                    </h4>
+                    @foreach (var item in Model)
+                    {
+                        <ul class="list-group mb-3">
+                            <li class="list-group-item d-flex justify-content-between lh-condensed">
+                                <div>
+                                    <h6 class="my-0">Tên sản phẩm</h6>
+                                    <small class="text-muted">@item.tenkinh</small>
+                                </div>
+                                <span class="text-muted">@item.giaban</span>
+                                <span class="text-muted">@item.soluong</span>
+                            </li>
+                        </ul>
+                    }
+                    <div class="list-group-item d-flex justify-content-between">
+                        <span>Tổng thanh toán (VND)</span>
+                        <strong>@ViewBag.Tongtien VNĐ</strong>
+                    </div>
+
+
+                    <form class="card p-2">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Mã giảm giá">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-secondary">Áp dụng</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col-md-8 order-md-1">
+                    <h4 class="mb-3">Địa chỉ thanh toán (Thanh Toán Trực Tuyến)</h4>
+                    <div class="needs-validation">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.ValidationSummary(true)
+                            <div class="mb-3">
+                                <label for="HoTen">Họ tên khách hàng</label>
+                                <input type="text" name="HoTen" class="form-control" id="HoTen">
+                                <div class="invalid-feedback">
+                                    Bạn chưa nhập thông tin.
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="orderday">Ngày đặt</label>
+                                <input type="text" name="NgayDH" class="form-control" id="orderday" placeholder="@DateTime.Now.ToLongDateString()" readonly>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="shipday">Ngày giao</label>
+                                <input type="text" class="form-control" id="shipday" name="NgayGiao" value="Đơn Hàng của bạn sẽ được giao từ 3-5 ngày, Rất mong bạn sẽ chờ đợi!" readonly>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="email">Số điện thoại</label>
+                                <input type="number" name="SDTKH" class="form-control" id="email" placeholder="096xxxxxxxx">
+                                <div class="invalid-feedback">
+                                    Please enter a valid number phone address for shipping updates.
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="email">Email <span class="text-muted">(Không bắt buộc)</span></label>
+                                <input type="email" name="Email" class="form-control" id="email" placeholder="ten@gmail.com">
+                                <div class="invalid-feedback">
+                                    Please enter a valid email address for shipping updates.
+                                </div>
+                            </div>
+
+
+
+                            <div class="mb-3">
+                                <label for="address">Địa chỉ nhận hàng</label>
+                                <input type="text" name="DiaChi" class="form-control" id="address" placeholder="123 tên đường" required>
+                                <div class="invalid-feedback">
+                                    Bạn chưa nhập thông tin.
+                                </div>
+                            </div>
+                            <input class="btn btn-primary btn-lg btn-block" type="submit" value="Đặt hàng" style="color: white;     margin-bottom: 20px;">
+                            <a class="btn btn-primary btn-lg btn-block" href=@Url.Action("DatHang","GioHang") style="color: white;     margin-bottom: 50px;">Thanh Toán Khi Nhận Hàng</a>
+                        }
+
+
+
+
+
+                        @*<a class="btn btn-primary btn-lg btn-block" type="submit" style="color: white;     margin-bottom: 50px;">Đặt hàng</a>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src=" https://code.jquery.com/jquery-3.3.1.slim.min.js " integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo " crossorigin="anonymous "></script>
+    <script>
+        window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js "><\/script>')
+    </script>
+    <script src="https://getbootstrap.com/docs/4.3/dist/js/bootstrap.bundle.min.js " integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o " crossorigin="anonymous "></script>
+    <script src="https://getbootstrap.com/docs/4.3/examples/checkout/form-validation.js "></script>
+</body>
+
+</html>

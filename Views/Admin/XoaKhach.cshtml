@@ -1,0 +1,68 @@
+﻿@model Đồ_Án_Web.Models.TTKhachHang
+
+@{
+    ViewBag.Title = "XoaKhach";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<br />
+<br />
+<h2 style="text-align:center">XÓA KHÁCH HÀNG</h2>
+<h3 style="padding-left:50px">Bạn quyết định xóa khách hàng này?</h3>
+<br />
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt style="padding-left:50px; text-align:left">
+            Họ và tên:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoTen)
+        </dd>
+
+        <dt style="padding-left: 50px; text-align: left">
+            Số điện thoại:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DienThoaiKH)
+        </dd>
+
+        <dt style="padding-left: 50px; text-align: left">
+            Địa chỉ:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChiKH)
+        </dd>
+
+        <dt style="padding-left: 50px; text-align: left">
+            Tài khoản:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TaiKhoan)
+        </dd>
+
+        <dt style="padding-left: 50px; text-align: left">
+            Mật khẩu:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MatKhau)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            @Html.ActionLink("Trở về", "Khach") |
+            <input type="submit" value="Xóa" style="background-color:darkred; color:white" class="btn btn-group" />
+        </div>
+    }
+</div>

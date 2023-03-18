@@ -1,0 +1,56 @@
+﻿
+@{ ViewBag.Title = "Login";
+    Layout = null; }
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://mdbcdn.b-cdn.net/wp-content/themes/mdbootstrap4/docs-app/css/dist/mdb5/standard/core.min.css">
+    <link rel="stylesheet" id="roboto-subset.css-css" href="https://mdbcdn.b-cdn.net/wp-content/themes/mdbootstrap4/docs-app/css/mdb5/fonts/roboto-subset.css?ver=3.9.0-update.5" type="text/css" media="all">
+    <link rel="stylesheet" href="~/Content/login.css" />
+    <title>Login</title>
+</head>
+<body>
+    <section class="vh-100 gradient-custom" style="background-color: gray ">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                        <div class="card-body p-5 text-center">
+
+                            <div class="mb-md-5 mt-md-4 pb-5">
+
+                                <h2 class="fw-bold mb-2 text-uppercase">Đăng nhập với tư cách quản trị viên</h2>
+                                @ViewBag.Thongbao
+                                @using (Html.BeginForm())
+                                {
+                                @Html.ValidationSummary(true)
+                                    <div class="form-outline form-white mb-4">
+                                        <input type="text" name="username" id="typeEmailX" class="form-control form-control-lg" />
+                                        <label class="form-label" for="typeEmailX">Tài Khoản</label>
+                                        @ViewData["Loi1"]
+                                    </div>
+
+                                    <div class="form-outline form-white mb-4">
+                                        <input type="password" name="password" id="typePasswordX" class="form-control form-control-lg" />
+                                        <label class="form-label" for="typePasswordX">Mật Khẩu</label>
+                                        @ViewData["Loi2"]
+                                    </div>
+                                    <button class="btn btn-outline-light btn-lg px-5" type="submit">Đăng nhập</button>}
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+
+<!-- MDB -->
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.1.0/mdb.min.js"></script>

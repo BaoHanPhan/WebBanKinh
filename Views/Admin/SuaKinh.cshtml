@@ -1,0 +1,85 @@
+﻿@model Đồ_Án_Web.Models.Kinh
+
+@{ ViewBag.Title = "SuaKinh";
+                Layout = "~/Views/Shared/_LayoutAdmin.cshtml"; }
+
+<br />
+<br />
+<h2>Sửa thông tin kính</h2>
+<br />
+
+@using (Html.BeginForm("SuaKinh", "Admin", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+@Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.MaKinh)
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.MaKinh, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div style="font:18px;padding:5px 0 0 5px">@Model.MaKinh</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TenKinh, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.TenKinh, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.TenKinh, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.GiaBan, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.GiaBan, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.GiaBan, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.AnhBia, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            Chọn ảnh mới
+                            <input type="file" name="fileUpload" />
+                            <img src="@Url.Content("~/img/"+ Model.AnhBia)" width="120" />(Ảnh hiện tại)
+                            @*Thong bao trung*@
+                            @ViewBag.Thongbao
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.MoTa, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <textarea name="chiTietSP">@Model.MoTa</textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.MaLoai, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("MaLoai")
+                        </div>
+                    </div>
+                    @*
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.MaHSX, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("MaHSX")
+
+                            </div>
+                        </div>*@
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Save" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>}
+
+<div>
+    @Html.ActionLink("Back to List", "Kinh")
+</div>

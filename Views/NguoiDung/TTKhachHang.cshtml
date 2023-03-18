@@ -1,0 +1,60 @@
+﻿@using Đồ_Án_Web.Models
+@model Đồ_Án_Web.Models.TTKhachHang
+
+@helper Truncate(string input, int length)
+{               if (input.Length < length)
+    {
+@input }
+else
+{
+@input.Substring(0, length)<text>...</text>}
+}
+
+@{
+    ViewBag.Title = "TTKhachHang";
+    Layout = "~/Views/Shared/_TrangChu.cshtml";
+}
+
+<h2 style="padding-right: 290px">Thông tin cá nhân</h2>
+
+<div class="navbar">
+    <div class="content">
+        <div class="Info" style="padding-left: 300px">
+            <div class="row">
+                <div class="text">
+                    <p style="text-align:left">
+                        Họ Tên:
+                        <br />
+                        Tài khoản:
+                        <br />
+                        Mật khẩu
+                        <br />
+                        Email:
+                        <br />
+                        Số điện thoại:
+                        <br />
+                        Địa chỉ:
+                    </p>
+                </div>
+                <div class="text">
+                    <p style="text-align:left">
+
+                        @Html.DisplayFor(model => model.HoTen)
+                        <br />
+                        @Html.DisplayFor(model => model.TaiKhoan)
+                        <br />
+                        @Truncate(Model.MatKhau, 1)
+                        <br />
+                        @Html.DisplayFor(model => model.Email)
+                        <br />
+                        @Html.DisplayFor(model => model.DienThoaiKH)
+                        <br />
+                        @Html.DisplayFor(model => model.DiaChiKH)
+
+                    </p>
+                </div>
+            </div>
+            @Html.ActionLink("Sửa Thông Tin", "SuaTTKhachHang", new { id = Session["MaKH"]})
+        </div>
+    </div>
+</div>

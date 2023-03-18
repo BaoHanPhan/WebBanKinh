@@ -1,0 +1,24 @@
+﻿@model IEnumerable<Đồ_Án_Web.Models.PhuKien>
+
+@{
+    ViewBag.Title = "HopKinh";
+    Layout = "~/Views/Shared/_TrangChu.cshtml";
+}
+
+<h2 style="padding-right:220px">Hộp Kính HQM</h2>
+@foreach (var PhuKien in Model)
+{
+    <div class="product">
+         <a href="@Url.Action("ChiTietpk","Home",new { id = PhuKien.MaPK})">
+            <h4 class="productName">@PhuKien.TenPhuKien</h4>
+            <img class="productImg" src="~/img/@PhuKien.AnhBiaPK" width="250">
+            <p class="productPrice ">@PhuKien.GiaBanPK VNĐ</p>
+
+        </a>
+        <!-- <a href="" class="productDetail ">Chi tiết</a> -->
+        <div class="box">
+            <a class="popupDetail " href=@Url.Action("ChiTietpk","Home",new { id = PhuKien.MaPK})>Chi tiết</a>
+            <a class="popupDetail " href="#popup1">Xem trước</a>
+        </div>
+    </div>
+}

@@ -1,0 +1,53 @@
+﻿@*@model IEnumerable<Đồ_Án_Web.Models.Kinh>*@
+
+@{
+    ViewBag.Title = "ChiTiet";
+    Layout = "~/Views/Shared/_TrangChu.cshtml";
+}
+
+<h2 style="padding-right: 290px">Chi Tiết Sản Phẩm</h2>
+@*@foreach (var kinh in Model)
+{*@
+    <div class="navbar">
+        <div class="content">
+            <div class="Detail">
+                
+                    <div class="row">
+                        <div class="pic">
+                            <img class="Img" src="~/img/@Model.AnhBia" width="550" height="550">
+                        </div>
+                        <div class="text">
+                            <h2 style="color:red"> @Model.TenKinh</h2>
+                            <h2 style="color:red"> @Model.GiaBan VNĐ</h2>
+                            <div class="statistic">
+                                <p>
+                                    Hãng Sản Xuất: @Model.HangSanXuat.TenHSX
+                                    <br>
+                                    Loại Kính: @Model.LoaiKinh.TenLoaiKinh
+                                    <br>
+                                    Chiều dài càng kính: 14.8;
+                                    Chiều dài mắt kính: 5.8;
+                                    Chiều dài cầu mũi: 1.6.
+                                </p>
+                            </div>
+                            <div class="Mota">
+                                <p>
+                                    @Model.MoTa
+                                </p>
+                            </div>
+                            <div style="color:red"><strong>Số lượng: @Model.SoLuongTon </strong></div>
+
+                            <div class="add-to-cart">
+                                <a href="@Url.Action("Themgiohang","GioHang", new { @makinh = @Model.MaKinh, @strURL= Request.Url.ToString()})">Thêm vào giỏ hàng</a>
+                            </div>
+                            <div class="dathang">
+                                <a href="@Url.Action("DatHang","GioHang")">Đặt Hàng</a>
+                            </div>
+
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+@*}*@
+

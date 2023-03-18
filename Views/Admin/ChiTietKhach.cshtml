@@ -1,0 +1,62 @@
+﻿@model Đồ_Án_Web.Models.TTKhachHang
+
+@{
+    ViewBag.Title = "ChiTietKhach";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<br />
+<br />
+<h2 style="text-align: center">THÔNG TIN CHI TIẾT VỀ KHÁCH HÀNG</h2>
+<br />
+
+<div>
+    <hr />
+
+    <dl class="dl-horizontal" style="padding-left:100px">
+
+        <dt style="text-align:left">
+            Họ và tên khách hàng:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoTen)
+        </dd>
+
+        <dt style="text-align:left">
+            Số điện thoại:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DienThoaiKH)
+        </dd>
+
+        <dt style="text-align:left">
+            Địa chỉ:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChiKH)
+        </dd>
+
+        <dt style="text-align:left">
+            Tài khoản:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TaiKhoan)
+        </dd>
+
+        <dt style="text-align:left">
+            Mật khẩu:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MatKhau)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Trở Về", "Khach")
+</p>

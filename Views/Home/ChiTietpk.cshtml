@@ -1,0 +1,44 @@
+﻿@*@model IEnumerable<Đồ_Án_Web.Models.PhuKien>*@
+@{
+    ViewBag.Title = "ChiTietpk";
+    Layout = "~/Views/Shared/_TrangChu.cshtml";
+}
+
+<h2 style="padding-right: 290px">Chi Tiết Phụ Kiện</h2>
+@*@foreach (var PhuKien in Model)*@
+@*  *@
+    <div class="navbar">
+        <div class="content">
+            <div class="Detail">
+
+                <div class="row">
+                    <div class="pic">
+                        <img class="Img" src="~/img/@Model.AnhBiaPK" width="550" height="550">
+                    </div>
+                    <div class="text">
+                        <h2 style="color:red"> @Model.TenPhuKien</h2>
+                        <h2 style="color:red"> @Model.GiaBanPK VNĐ</h2>
+                        <div class="statistic">
+                            <p>
+                                Hãng Sản Xuất: @Model.HangSanXuat.TenHSX
+                                <br>
+                                Loại Kính: @Model.LoaiPhuKien.TenLoaiPhuKien
+
+                            </p>
+                        </div>
+                        <div class="Mota">
+                            <p>
+                                @Model.MoTaPK
+                            </p>
+                        </div>
+                        <div style="color:red"><strong>Số lượng: @Model.SoLuongPK </strong></div>
+
+                        <div class="add-to-cart">Thêm vào giỏ hàng</div>
+                        <div class="dathang">Đặt hàng</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@*  *@
+

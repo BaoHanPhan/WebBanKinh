@@ -1,0 +1,12 @@
+﻿.gradient-custom {
+    /* fallback for old browsers */
+    background: #6a11cb;
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(236, 164, 55, 1), rgba(238, 201, 53, 1));
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(236, 164, 55, 1), rgba(235, 201, 53, 1))
+}
+
+.form-outline .form-control {
+    background: #3e3e42 !important;
+}

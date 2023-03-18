@@ -1,0 +1,24 @@
+﻿@charset "UTF-8";
+
+#pagetop {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 100;
+    width: 4rem;
+    height: 4rem;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background: #ffbd59;
+}
+
+    #pagetop a {
+        color: #fff;
+        font-size: 3rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+    }

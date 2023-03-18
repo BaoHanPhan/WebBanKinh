@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Đồ_Án_Web.Models.Kinh>
+
+@{
+    ViewBag.Title = "TrangChu";
+    Layout = "~/Views/Shared/_TrangChu.cshtml";
+}
+
+<h2 style="padding-right:220px">Các Sản Phẩm Mới</h2>
+@foreach (var kinh in Model)
+{
+    <div class="product">
+        <a href="@Url.Action("ChiTiet","Home",new { id = kinh.MaKinh})">
+            <h4 class="productName">@kinh.TenKinh</h4>
+            <img class="productImg" src="~/img/@kinh.AnhBia" width="250">
+            <p class="productPrice">@kinh.GiaBan VNĐ</p>
+
+        </a>
+        <!-- <a href="" class="productDetail ">Chi tiết</a> -->
+        <div class="box">
+            <a class="popupDetail " href=@Url.Action("ChiTiet","Home",new { id = kinh.MaKinh})>Chi tiết</a>
+            <a class="popupDetail " href="#popup1">Xem trước</a>
+        </div>
+    </div>
+}
+
+

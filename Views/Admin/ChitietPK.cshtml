@@ -1,0 +1,68 @@
+﻿@model Đồ_Án_Web.Models.PhuKien
+
+@{ ViewBag.Title = "ChitietPK";
+                Layout = "~/Views/Shared/_LayoutAdmin.cshtml"; }
+
+<br />
+<br />
+<h2>Chi tiết phụ kiện</h2>
+<br />
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên Sản Phẩm
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenPhuKien)
+        </dd>
+
+        <dt>
+            Giá bán
+        </dt>
+
+        <dd>
+            @String.Format("{0:0,0}", Model.GiaBanPK) VNĐ
+        </dd>
+
+        <dt>
+            Ảnh sản phẩm
+        </dt>
+
+        <dd>
+            <img src="@Url.Content("~/img/"+ Model.AnhBiaPK)" width="400" />
+        </dd>
+
+        <dt>
+            Mô tả
+        </dt>
+
+        <dd>
+        <dd style="width:600px;text-align:justify">
+            @Html.DisplayFor(model => model.MoTaPK)
+        </dd>
+
+        <dt>
+            Loại sản phẩm
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoaiPhuKien.TenLoaiPhuKien)
+        </dd>
+
+        <dt>
+            Tên thương hiệu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HangSanXuat.TenHSX)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "SuaPhukien", new { id = Model.MaPK }) |
+    @Html.ActionLink("Back to List", "PhuKien")
+</p>

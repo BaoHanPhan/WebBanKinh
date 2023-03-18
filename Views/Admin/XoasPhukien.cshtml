@@ -1,0 +1,84 @@
+﻿@model Đồ_Án_Web.Models.PhuKien
+
+@{
+    ViewBag.Title = "XoasPhukien";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<br />
+<br />
+<h2>Xóa Phụ Kiện</h2>
+<br />
+
+<h3>Bạn có chắc xóa sản phẩm này không ?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên Phụ Kiện
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenPhuKien)
+        </dd>
+
+        <dt>
+            Giá bán
+        </dt>
+
+        <dd>
+            @String.Format("{0:0,0}", Model.GiaBanPK) VNĐ
+        </dd>
+
+        <dt>
+            Ảnh sản phẩm
+        </dt>
+
+        <dd>
+            <img src="@Url.Content("~/img/"+ Model.AnhBiaPK)" width="400px" />
+        </dd>
+
+        <dt>
+            Mô tả
+        </dt>
+
+        <dd>
+        <dd style="width:600px;text-align:justify">
+            @Html.DisplayFor(model => model.MoTaPK)
+        </dd>
+
+        <dt>
+            Loại phụ kiện
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoaiPhuKien.TenLoaiPhuKien)
+        </dd>
+
+        <dt>
+            Loại thương hiệu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HangSanXuat.TenHSX)
+        </dd>
+        <div style=" padding-bottom: 100px;">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Xóa" style="background-color: red; margin-left: -90px;" class="btn btn-default" />
+
+                        @Html.ActionLink("Back to List", "PhuKien")
+                    </div>
+                </div>
+
+            }
+
+
+        </div>
+
+    </dl>
+
+</div>

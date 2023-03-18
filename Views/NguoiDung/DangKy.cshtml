@@ -1,0 +1,130 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Creative Colorlib SignUp Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="application/x-javascript">
+        addEventListener("load", function() {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!-- Custom Theme files -->
+    <link href="~/Content/DangKy.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- //Custom Theme files -->
+    <!-- web font -->
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+    <!-- //web font -->
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="header">
+            <div class="line">
+                <h3>Welcome to HQM glasses!</h3>
+            </div>
+            <div class="menu">
+                <div class="drop">
+                    <a href=@Url.Action("SanPham", "Home") class="item ">Sản phẩm</a>
+                    <div class="drop-menu">
+                        <a href=@Url.Action("MatKinhNu", "Home")>Mắt kính nữ</a>
+                        <a href=@Url.Action("MatKinhNam", "Home")>Mắt kính nam</a>
+                        <a href=@Url.Action("MatKinhTreEm", "Home")>Mắt kính trẻ em</a>
+                    </div>
+
+                </div>
+                <div class="drop">
+
+                    <a href=@Url.Action("PhuKien", "Home") class="item">Phụ kiện</a>
+                    <div class="drop-menu">
+                        <a href=@Url.Action("HopKinh", "Home")>Hộp đựng kính</a>
+                        <a href=@Url.Action("DayDeoKinh", "Home")>Dây đeo kính</a>
+                        <a href=@Url.Action("NuocLauKinh", "Home")>Nước lau kính</a>
+                    </div>
+                </div>
+
+                <a href=@Url.Action("TrangChu", "Home") class="item">Liên hệ</a>
+
+                <a href=@Url.Action("TrangChu", "Home") class="logo"> <img src="/img/HQM.png" width="180px" height="80px" alt=""> </a>
+
+
+                <a href=@Url.Action("GioHang", "GioHang") class="item">Giỏ hàng</a>
+                <a href=@Url.Action("DangKy", "NguoiDung") class="item">Đăng ký</a>
+                <a href=@Url.Action("DangNhap", "NguoiDung") class="item">Đăng nhập</a>
+
+            </div>
+        </div>
+        <!-- main -->
+        <div class="main-w3layouts wrapper">
+            <h1>Creative SignUp Form</h1>
+            <div class="main-agileinfo">
+                <div class="agileits-top">
+                    <form action="#" method="post">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.ValidationSummary(true)
+                            <input class="text w3lpass" type="text" name="HoTen" id="HoTen" placeholder="Họ Tên" required="">
+                            @ViewData["loi1"]
+                            <input class="text w3lpass" type="text" name="TaiKhoan" id="TaiKhoan" placeholder="Tài Khoản" required="">
+                            @ViewData["loi2"]
+                            <input class="text w3lpass" type="password" name="MatKhau" id="MatKhau" placeholder="Mật Khẩu" required="">
+                            @ViewData["loi3"]
+                            <input class="text w3lpass" type="password" name="XacNhanMatKhau" id="XacNhanMatKhau" placeholder="Xác Nhận Mật Khẩu" required="">
+                            @ViewData["loi4"]
+                            <input class="text w3lpass" type="email" name="Email" id="Email" placeholder="Email" required="">
+                            @ViewData["loi5"]
+                            <input class="text w3lpass" type="text" name="DienThoaiKH" id="DienThoaiKH" placeholder="Số Điện Thoại" required="">
+                            @ViewData["loi6"]
+                            <input class="text w3lpass" type="text" name="DiaChiKH" id="DiaChiKH" placeholder="Địa Chỉ" required="">
+                            @ViewData["loi7"]
+                            <div class="wthree-text">
+                                <label class="anim">
+                                    <input type="checkbox" class="checkbox" required="">
+                                    <span>I Agree To The Terms & Conditions</span>
+                                </label>
+                                <div class="clear"> </div>
+                            </div>
+                            <input type="submit" value="SIGNUP">
+                        }
+
+
+                    </form>
+                    <p>Don't have an Account? <a href=@Url.Action("DangNhap", "NguoiDung")> Login Now!</a></p>
+                </div>
+            </div>
+            <!-- copyright -->
+            <div class="colorlibcopy-agile">
+                <p>HQM Glasses</p>
+            </div>
+            <!-- //copyright -->
+            <ul class="colorlib-bubbles">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+        <!-- //main -->
+</body>
+
+</html>
+

@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/GioHang.css" rel="stylesheet" />
+    <title>Đặt hàng</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="line">
+                <h3>Welcome to HQM glasses!</h3>
+            </div>
+            <div class="menu">
+                <div class="drop">
+                    <a href=@Url.Action("SanPham", "Home") class="item ">Sản phẩm</a>
+                    <div class="drop-menu">
+                        <a href=@Url.Action("MatKinhNu", "Home")>Mắt kính nữ</a>
+                        <a href=@Url.Action("MatKinhNam", "Home")>Mắt kính nam</a>
+                        <a href=@Url.Action("MatKinhTreEm", "Home")>Mắt kính trẻ em</a>
+                    </div>
+
+                </div>
+                <div class="drop">
+
+                    <a href=@Url.Action("PhuKien", "Home") class="item">Phụ kiện</a>
+                    <div class="drop-menu">
+                        <a href=@Url.Action("HopKinh", "Home")>Hộp đựng kính</a>
+                        <a href=@Url.Action("DayDeoKinh", "Home")>Dây đeo kính</a>
+                        <a href=@Url.Action("NuocLauKinh", "Home")>Nước lau kính</a>
+                    </div>
+                </div>
+
+                <a href=@Url.Action("TrangChu", "Home") class="item">Liên hệ</a>
+
+                <a href=@Url.Action("TrangChu", "Home") class="logo"> <img src="/img/HQM.png" width="180px" height="80px" alt=""> </a>
+
+
+                @Html.Action("GioHangPartial", "GioHang")
+                @if (Session["TaiKhoanKH"] != null)
+                {
+                    @*<text>@Session["TaiKhoanKH"].ToString() </text>*@
+                    <a href=@Url.Action("TTKhachHang","NguoiDung",new { id = Session["MaKH"] })>@Session["TaiKhoanKH"].ToString()</a>
+                    <a href=@Url.Action("Logout", "NguoiDung" ) class="item">Đăng xuất</a>
+                }
+                else
+                {
+                    <a href=@Url.Action("DangKy", "NguoiDung" ) class="item">Đăng ký</a>
+                    <a href=@Url.Action("DangNhap", "NguoiDung" ) class="item">Đăng nhập</a>
+                }
+
+            </div>
+        </div>
+        <div>
+            @RenderBody()
+        </div>
+    </div>
+</body>
+</html>

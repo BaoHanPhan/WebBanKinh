@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "ConfirmDH";
+    Layout = null;
+}
+
+<body>
+    <div class="cndh" style="text-align:center; margin-top: 100px">      
+        <h2> Bạn đã đặt hàng thành công  <br /><br /> Đơn vị vận chuyển sẽ chuyển hàng cho bạn từ 3-5 ngày <br /><br /> Cảm ơn bạn đã đồng hành cùng HQM Shop!</h2>
+        <a href="@Url.Action("TrangChu", "Home")" style="">Về Trang Chủ</a>
+    </div>
+</body>
+
+<style>
+    body {
+        background-color: #FFBD59;
+        margin-top:220px;
+    }
+
+
+    .cndh a {
+        padding: 8px;
+        background-color: #1d7d02;
+        border-radius: 5px;
+        font-weight: bold;
+        text-decoration: none;
+        color: white
+    }
+        .cndh a:hover {
+            background-color: #24a103;
+        }
+        
+</style>
+
+

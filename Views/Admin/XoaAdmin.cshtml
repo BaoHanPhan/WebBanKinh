@@ -1,0 +1,53 @@
+﻿@model Đồ_Án_Web.Models.Admin
+
+@{
+    ViewBag.Title = "XoaAdmin";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<br />
+<br />
+<h2 style="padding-left:50px">XÓA ADMIN</h2>
+<h3 style="padding-left:50px">Bạn quyết định xóa tài khoản này</h3>
+<br />
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            Tài khoản:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TK)
+        </dd>
+
+        <dt>
+            Mật khẩu:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MK)
+        </dd>
+
+        <dt>
+            Họ và tên:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoTenAD)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            @Html.ActionLink("Trở về", "TkAdmin") |
+            <input type="submit" value="Xóa" style="background-color:darkred; color:white" class="btn btn-group" />
+        </div>
+    }
+</div>

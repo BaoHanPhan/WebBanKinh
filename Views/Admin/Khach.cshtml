@@ -1,0 +1,82 @@
+﻿@using Đồ_Án_Web.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<Đồ_Án_Web.Models.TTKhachHang>
+
+@helper Truncate(String input, int length)
+{
+    if (input.Length < length)
+    {
+        @input
+    }
+    else
+    {
+        @input.Substring(0, length)<text>...</text>
+    }
+}
+@{
+    ViewBag.Title = "Khach";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<br />
+<br />
+
+<h2>Danh sách thông tin khách hàng</h2>
+<br />
+
+
+<table class="table">
+
+    <tr>
+        <th style="width:300px">Họ và tên khách hàng</th>
+        <th style="width:200px">Tài khoản khách hàng</th>
+        <th style="width:200px">Mật khẩu khách hàng</th>
+        <th style="width:200px">Email khách hàng</th>
+        <th style="width:300px">Số điện thoại khách hàng</th>
+        <th style="width:200px">Địa chỉ khách hàng</th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoTen)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.TaiKhoan)
+            </td>
+
+            <td>
+                @Truncate(item.MatKhau, 1)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DienThoaiKH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiaChiKH)
+            </td>
+
+            <td>
+                @Html.ActionLink("Chi Tiết", "ChiTietKhach", new { id = item.MaKH }) |
+                @Html.ActionLink("Xóa", "XoaKhach", new { id = item.MaKH })
+            </td>
+        </tr>
+    }
+
+</table>
+<!--Tạo liên kết trang-->
+Trang@(Model.PageCount< Model.PageNumber ? 0: Model.PageNumber)/@Model.PageCount;
+<div class="MenuTrang">
+    @Html.PagedListPager(Model, page => Url.Action("Khach", new { page = page }))
+</div>
+<style>
+    .MenuTrang li {
+        display: inline;
+    }
+</style>
+
